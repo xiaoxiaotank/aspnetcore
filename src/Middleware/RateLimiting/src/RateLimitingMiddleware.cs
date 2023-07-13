@@ -128,7 +128,7 @@ internal sealed partial class RateLimitingMiddleware
                 DefaultRateLimiterPolicy? policy;
                 // Use custom policy OnRejected if available, else use OnRejected from the Options if available.
                 policy = enableRateLimitingAttribute?.Policy;
-                if (policy is not null)
+                if (policy?.OnRejected is not null)
                 {
                     thisRequestOnRejected = policy.OnRejected;
                 }
